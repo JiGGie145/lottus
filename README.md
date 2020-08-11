@@ -99,7 +99,7 @@ def ussd_json_api():
     js = json.dumps(request.json)
     req_dict = json.loads(js)
 
-    resp = lottus_app.handle_request(req_dict)
+    resp = lottus_app.process_request(req_dict)
 
     return Response(json.dumps(resp), status=200, mimetype='application/json')
 
@@ -121,5 +121,5 @@ Testing
 Any one can test it on Postman or curl or httpie (my favorite)
 
 ``` {.sourceCode .bash}
-echo {"session": 1234, "cell_number": "+258842271064", "request_str": "4"} | http http://localhost:5000/ussdapp/json/
+echo {"session_nr": 1234, "cell_nr": "+258842271064", "request_str": "4"} | http http://localhost:5000/ussdapp/json/
 ```
